@@ -50,7 +50,7 @@ const Hero = () => {
                   href={socialLinks.linkedin} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:opacity-70 transition-all duration-200 hover:translate-x-1 inline-block"
+                  className="hover:text-[#CE5347] transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   LinkedIn
                 </a>
@@ -58,13 +58,13 @@ const Hero = () => {
                   href={socialLinks.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="hover:opacity-70 transition-all duration-200 hover:translate-x-1 inline-block"
+                  className="hover:text-[#CE5347] transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   Instagram
                 </a>
                 <a 
                   href={socialLinks.cv} 
-                  className="hover:opacity-70 transition-all duration-200 hover:translate-x-1 inline-block"
+                  className="hover:text-[#CE5347] transition-all duration-200 hover:translate-x-1 inline-block"
                 >
                   CV
                 </a>

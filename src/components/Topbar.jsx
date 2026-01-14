@@ -52,21 +52,21 @@ const Topbar = () => {
           <a 
             href="#work" 
             onClick={(e) => handleNavClick(e, '#work')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a 
             href="#about" 
             onClick={(e) => handleNavClick(e, '#about')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a 
             href="#contact" 
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             CONTACT
           </a>
@@ -129,21 +129,21 @@ const Topbar = () => {
           <a
             href="#work"
             onClick={(e) => handleNavClick(e, '#work')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a
             href="#about"
             onClick={(e) => handleNavClick(e, '#about')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:opacity-70 transition-opacity cursor-pointer"
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             CONTACT
           </a>

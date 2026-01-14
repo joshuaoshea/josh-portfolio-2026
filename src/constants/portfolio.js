@@ -11,7 +11,7 @@ export const personalInfo = {
 };
 
 export const socialLinks = {
-  linkedin: "https://linkedin.com/in/yourprofile",
+  linkedin: "https://www.linkedin.com/in/joshoshea/",
   instagram: "https://instagram.com/yourprofile",
   cv: "#cv" // Update with actual CV link
 };
@@ -37,8 +37,8 @@ export const experience = [
 export const caseStudies = [
   {
     company: "ZENDESK",
-    title: "Providing actionable insights to agents at the point of call.",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    title: "Unifying Post-Call Intelligence Across Zendesk Voice Platform",
+    description: "I led the design for a single, dynamic post-call experience that replaced fragmented comments across all voice call types. The system unified AI transcription, summarization, and multi-channel playback while scaling to support future voice, video and AI Agent workflows",
     tags: ["0 TO 1 DESIGN", "AGENTIC AI", "CCASS"],
     metrics: [
       { value: "1.1%", label: "ATC CONVERSION" },
@@ -50,9 +50,9 @@ export const caseStudies = [
   },
   {
     company: "ZENDESK",
-    title: "Enabling admins to automate work via AI Voice Agents",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-    tags: ["0 TO 1 DESIGN"],
+    title: "Deflecting High-Volume Calls with AI Voice Agents",
+    description: "This project focused on enabling call centers to offload routine inquiries to AI without sacrificing control or service quality. I designed admin tools for agent setup, live call monitoring, human takeover, and post-call training to continuously improve AI performance.",
+    tags: ["0 TO 1 DESIGN", "AGENTIC AI"],
     metrics: [
       { value: "1.1%", label: "ATC CONVERSION" },
       { value: "62%", label: "OVERALL SATISFACTION" }
@@ -63,8 +63,8 @@ export const caseStudies = [
   },
   {
     company: "GENESYS",
-    title: "Enabling customer self service via web messenger",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    title: "Simplifying Digital Channel Deployment Across Genesys",
+    description: "I led the design of a unified digital channel setup experience that streamlines configuration and deployment for admins. The solution replaced fragmented workflows and created a repeatable model for scaling additional channels starting with Web Messenger as the test case.",
     tags: ["0 TO 1 DESIGN"],
     metrics: [
       { value: "1.1%", label: "ATC CONVERSION" },

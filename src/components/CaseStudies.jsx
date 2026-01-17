@@ -19,7 +19,7 @@ const CaseStudies = () => {
         
         <div className="flex flex-col gap-8">
           {caseStudies.map((study, index) => (
-            <CaseStudy key={index} {...study} />
+            <CaseStudy key={index} {...study} caseStudyId={study.id} />
           ))}
         </div>
       </div>

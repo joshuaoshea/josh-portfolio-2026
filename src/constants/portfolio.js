@@ -36,6 +36,7 @@ export const experience = [
 
 export const caseStudies = [
   {
+    id: "zendesk-voice-intelligence",
     company: "ZENDESK",
     title: "Unifying Post-Call Intelligence Across Zendesk Voice Platform",
     description: "I led the design for a single, dynamic post-call experience that replaced fragmented comments across all voice call types. The system unified AI transcription, summarization, and multi-channel playback while scaling to support future voice, video and AI Agent workflows",
@@ -49,6 +50,7 @@ export const caseStudies = [
     link: "#"
   },
   {
+    id: "zendesk-ai-voice-agents",
     company: "ZENDESK",
     title: "Deflecting High-Volume Calls with AI Voice Agents",
     description: "This project focused on enabling call centers to offload routine inquiries to AI without sacrificing control or service quality. I designed admin tools for agent setup, live call monitoring, human takeover, and post-call training to continuously improve AI performance.",
@@ -62,16 +64,17 @@ export const caseStudies = [
     link: "#"
   },
   {
+    id: "genesys-digital-channels",
     company: "GENESYS",
     title: "Simplifying Digital Channel Deployment Across Genesys",
     description: "I led the design of a unified digital channel setup experience that streamlines configuration and deployment for admins. The solution replaced fragmented workflows and created a repeatable model for scaling additional channels starting with Web Messenger as the test case.",
     tags: ["0 TO 1 DESIGN"],
     metrics: [
-      { value: "1.1%", label: "ATC CONVERSION" },
-      { value: "62%", label: "OVERALL SATISFACTION" }
+      { value: "42%", label: "REDUCTION IN SETUP TIME" },
+      { value: "17%", label: "REDUCTION IN ADMIN ERROR" }
     ],
     bgColor: "#d8ecaa",
-    image: null,
+    image: "/images/work/genesys-digital-channels.png",
     link: "#"
   }
 ];

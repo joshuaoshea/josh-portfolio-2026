@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image }) => {
+const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image, caseStudyId }) => {
   return (
     <div 
       className="relative w-full rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-[1.01]" 
@@ -57,7 +58,7 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image 
           </div>
 
           {/* View More Link */}
-          <a href="#" className="flex items-center gap-2 md:gap-3 mt-2 group w-fit">
+          <Link to={`/case-study/${caseStudyId}`} className="flex items-center gap-2 md:gap-3 mt-2 group w-fit">
             <span 
               className="text-base md:text-lg font-normal font-manrope tracking-[0.36px] group-hover:opacity-70 transition-opacity" 
               style={{ color: bgColor === '#b1d1f6' ? '#000' : '#32404f' }}
@@ -80,7 +81,7 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image 
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Right Browser Mockup */}
@@ -100,14 +101,16 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image 
                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="hidden md:block">
                   <path d="M8 4V3C8 2.44772 7.55228 2 7 2H5C4.44772 2 4 2.44772 4 3V4M3 4H9C9.55228 4 10 4.44772 10 5V9C10 9.55228 9.55228 10 9 10H3C2.44772 10 2 9.55228 2 9V5C2 4.44772 2.44772 4 3 4Z" stroke="#dbdbdc" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span className="text-white text-[10px] md:text-xs font-normal font-manrope">zendesk.com</span>
+                <span className="text-white text-[10px] md:text-xs font-normal font-manrope">
+                  {company.toLowerCase()}.com
+                </span>
               </div>
             </div>
 
             {/* Content Area */}
-            <div className="bg-[#38393a] h-[calc(100%-40px)] md:h-[calc(100%-53px)] flex items-center justify-center p-3 md:p-4">
+            <div className="bg-[#38393a] h-[calc(100%-40px)] md:h-[calc(100%-53px)] flex items-center justify-center overflow-hidden">
               {image ? (
-                <img src={image} alt={title} className="w-full h-full object-cover" />
+                <img src={image} alt={title} className="w-full h-full object-cover object-top" />
               ) : (
                 <div className="text-white text-xs md:text-sm opacity-50">Product Screenshot</div>
               )}

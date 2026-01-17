@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { personalInfo } from '../constants/portfolio';
 
 const Topbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +26,24 @@ const Topbar = () => {
     setIsMenuOpen(false);
     
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      const sectionId = href.substring(1);
+      
+      // If not on home page, navigate to home first
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+        // Wait for navigation, then scroll
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -50,21 +68,21 @@ const Topbar = () => {
         {/* Navbar - Hidden on mobile, visible on desktop */}
         <nav className="hidden lg:flex gap-11 items-center">
           <a 
-            href="#work" 
+            href="/#work" 
             onClick={(e) => handleNavClick(e, '#work')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a 
-            href="#about" 
+            href="/#about" 
             onClick={(e) => handleNavClick(e, '#about')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a 
-            href="#contact" 
+            href="/#contact" 
             onClick={(e) => handleNavClick(e, '#contact')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
@@ -127,21 +145,21 @@ const Topbar = () => {
       >
         <nav className="flex flex-col gap-4 pt-6 pb-4">
           <a
-            href="#work"
+            href="/#work"
             onClick={(e) => handleNavClick(e, '#work')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a
-            href="#about"
+            href="/#about"
             onClick={(e) => handleNavClick(e, '#about')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a
-            href="#contact"
+            href="/#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
             className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
           >

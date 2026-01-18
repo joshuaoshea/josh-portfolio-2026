@@ -7,6 +7,8 @@ const Home = () => {
     <>
       <Hero />
       <CaseStudies />
+      {/* Spacer to ensure footer reveal works */}
+      <div style={{ height: '200px' }}></div>
     </>
   );
 };

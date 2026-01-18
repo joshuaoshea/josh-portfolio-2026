@@ -10,16 +10,28 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen bg-white">
-        <Topbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/case-study/:id" element={<CaseStudyPage />} />
-          </Routes>
-        </main>
-        <Footer />
+      {/* Outer wrapper for scrolling */}
+      <div style={{ paddingBottom: '600px' }}>
+        {/* Main content - sits above fixed footer */}
+        <div 
+          className="relative min-h-screen"
+          style={{ 
+            backgroundColor: '#FDF7F2',
+            zIndex: 10
+          }}
+        >
+          <Topbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/case-study/:id" element={<CaseStudyPage />} />
+            </Routes>
+          </main>
+        </div>
       </div>
+      
+      {/* Fixed footer behind content - reveals as you scroll */}
+      <Footer />
     </Router>
   );
 }

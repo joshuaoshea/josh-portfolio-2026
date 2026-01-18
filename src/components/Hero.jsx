@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="max-w-[1390px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-[72px]">
         {/* Left Side - Main Intro */}
         <div className="flex flex-col gap-2 max-w-[730px]">
-          <p className="text-accent text-lg font-normal font-manrope">ABOUT</p>
+          <p className="text-accent text-lg font-normal font-manrope">DIA DHUIT</p>
           <div className="text-black text-[32px] md:text-[42px] lg:text-[52px] font-normal font-manrope leading-tight">
             {personalInfo.tagline.split('\n').length > 1 ? (
               personalInfo.tagline.split('\n').map((line, i) => <p key={i} className={i < personalInfo.tagline.split('\n').length - 1 ? "mb-0" : ""}>{line}</p>)

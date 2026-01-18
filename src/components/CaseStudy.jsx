@@ -4,30 +4,22 @@ import { Link } from 'react-router-dom';
 const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image, caseStudyId }) => {
   return (
     <div 
-      className="relative w-full rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-[1.01]" 
-      style={{ backgroundColor: bgColor }}
+      className="relative w-full rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-[1.01] border border-[#F4EAE1]" 
+      style={{ backgroundColor: '#FEFAF6' }}
     >
       <div className="min-h-[400px] md:min-h-[505px] p-6 md:p-10 lg:p-[54px] flex flex-col lg:flex-row gap-8 lg:gap-0">
         {/* Left Content */}
         <div className="flex flex-col gap-3 max-w-[617px] lg:w-1/2 z-10">
-          <p className="text-accent text-base md:text-lg font-normal font-manrope">{company}</p>
+          <p className="text-base md:text-lg font-normal font-manrope" style={{ color: 'rgba(50,64,79,0.75)' }}>{company}</p>
           
           <h3 
-            className="text-[24px] md:text-[32px] lg:text-4xl font-medium font-manrope leading-normal tracking-[0.72px]" 
-            style={{ color: bgColor === '#b1d1f6' ? '#000' : '#32404f' }}
+            className="text-[24px] md:text-[32px] lg:text-4xl font-medium font-manrope leading-normal tracking-[0.72px] text-[#32404f]"
           >
             {title}
           </h3>
-          
-          <div 
-            className="text-base md:text-lg font-normal font-manrope leading-normal tracking-[0.36px]" 
-            style={{ color: bgColor === '#b1d1f6' ? '#000' : '#32404f' }}
-          >
-            <p>{description}</p>
-          </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 md:gap-3 mt-2">
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {tags.map((tag, index) => (
               <div 
                 key={index}
@@ -39,9 +31,12 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image,
               </div>
             ))}
           </div>
-
-          {/* Divider Line */}
-          <div className="h-[1px] bg-primary opacity-30 my-2 w-full max-w-[624px]"></div>
+          
+          <div 
+            className="text-base md:text-lg font-normal font-manrope leading-normal tracking-[0.36px] text-[#32404f]"
+          >
+            <p>{description}</p>
+          </div>
 
           {/* Metrics */}
           <div className="flex gap-3 md:gap-4 flex-wrap">
@@ -57,30 +52,14 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image,
             ))}
           </div>
 
-          {/* View More Link */}
-          <Link to={`/case-study/${caseStudyId}`} className="flex items-center gap-2 md:gap-3 mt-2 group w-fit">
-            <span 
-              className="text-base md:text-lg font-normal font-manrope tracking-[0.36px] group-hover:opacity-70 transition-opacity" 
-              style={{ color: bgColor === '#b1d1f6' ? '#000' : '#32404f' }}
-            >
-              View more
+          {/* Learn More Button */}
+          <Link 
+            to={`/case-study/${caseStudyId}`} 
+            className="bg-[#FF5500] hover:bg-[#E64D00] transition-colors duration-200 rounded-[11px] px-[25px] py-[20px] w-[154px] h-[60px] flex items-center justify-center mt-[25px]"
+          >
+            <span className="text-[#FEFAF6] text-lg font-medium font-manrope leading-tight">
+              Learn more
             </span>
-            <svg 
-              width="18" 
-              height="18" 
-              viewBox="0 0 18 18" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="group-hover:translate-x-1 transition-transform"
-            >
-              <path 
-                d="M6.75 13.5L11.25 9L6.75 4.5" 
-                stroke={bgColor === '#b1d1f6' ? '#000' : '#32404f'} 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
           </Link>
         </div>
 

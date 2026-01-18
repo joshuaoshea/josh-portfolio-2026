@@ -50,9 +50,10 @@ const Topbar = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 bg-white border-b border-[rgba(50,64,79,0.35)] px-5 md:px-12 lg:px-[50px] py-6 z-50 transition-shadow duration-300 ${
+      className={`fixed top-0 left-0 right-0 border-b border-[rgba(50,64,79,0.35)] px-5 md:px-12 lg:px-[50px] py-6 transition-all duration-300 ${
         isScrolled ? 'shadow-sm' : ''
       }`}
+      style={{ backgroundColor: '#FDF7F2', zIndex: 100 }}
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Left Naming */}

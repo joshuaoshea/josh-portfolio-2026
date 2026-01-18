@@ -44,7 +44,7 @@ const CaseStudyPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-[90px]">
+    <div className="min-h-screen pt-[90px]" style={{ backgroundColor: '#FDF7F2' }}>
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[50px] py-6 md:py-12 lg:py-[75px]">
         <div className="flex gap-8 lg:gap-[69px] items-start">
           {/* Sidebar Navigation */}
@@ -146,7 +146,7 @@ const CaseStudyPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-8">
                   <div 
                     ref={goalCard1.ref}
-                    className={`border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px] 
+                    className={`bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] 
                       transition-all duration-700 ease-out
                       hover:scale-105 hover:shadow-lg cursor-pointer
                       ${goalCard1.isVisible 
@@ -163,7 +163,7 @@ const CaseStudyPage = () => {
                   
                   <div 
                     ref={goalCard2.ref}
-                    className={`border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px] 
+                    className={`bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] 
                       transition-all duration-700 ease-out delay-150
                       hover:scale-105 hover:shadow-lg cursor-pointer
                       ${goalCard2.isVisible 
@@ -277,16 +277,30 @@ const CaseStudyPage = () => {
 
                 <div className="flex flex-col lg:flex-row gap-4 md:gap-5">
                   <div className="flex-1 space-y-4 md:space-y-[17px]">
-                    {[1, 2, 3].map((num) => (
-                      <div key={num} className="border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px]">
-                        <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                          INSIGHT #{num}
-                        </p>
-                        <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                          Companies included a varied number of feature ratings in their forms. Target: Includes three ratings and requires size-specific questions.
-                        </p>
-                      </div>
-                    ))}
+                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                        INSIGHT #1
+                      </p>
+                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                        Genesys' fragmented product experience limits visibility of digital channel capabilities, putting it at a disadvantage compared to competitors with more centralized and discoverable offerings.
+                      </p>
+                    </div>
+                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                        INSIGHT #2
+                      </p>
+                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                        Compared to competitors, Genesys makes flow customization harder for non-technical users, forcing them to accept unnecessary complexity to achieve the flexibility they need.
+                      </p>
+                    </div>
+                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                        INSIGHT #3
+                      </p>
+                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                        Competitors that offer hands-on, learn-by-doing onboarding better communicate product value upfront, while Genesys relies on experiences that delay understanding of what's possible.
+                      </p>
+                    </div>
                   </div>
                   
                   <div className="lg:w-[491px] bg-[rgba(239,239,239,0.75)] rounded-lg min-h-[300px] lg:min-h-[472px] pl-4 md:pl-6 lg:pl-[15px] pt-4 md:pt-6 lg:pt-[15px] pb-4 md:pb-6 lg:pb-[15px] flex items-center justify-center">
@@ -341,7 +355,11 @@ const CaseStudyPage = () => {
                 </p>
 
                 <div className="bg-[rgba(239,239,239,0.75)] rounded-lg p-6 md:p-8 lg:p-[15px] min-h-[300px] lg:min-h-[472px] flex items-center justify-center mb-6 md:mb-8">
-                  <span className="text-[#65707b] text-sm opacity-50">Research Findings Visual</span>
+                  <img 
+                    src="/images/case-studies/genesys/research-insights.png"
+                    alt="Research findings and insights"
+                    className="w-full h-full object-contain rounded-lg"
+                  />
                 </div>
 
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] text-center mb-4 md:mb-6">
@@ -350,7 +368,7 @@ const CaseStudyPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   {['FEATURE RATINGS', 'FEATURE RATINGS', 'FEATURE RATINGS'].map((title, index) => (
-                    <div key={index} className="bg-[#f9f9f9] rounded-lg p-4 md:p-5 lg:p-[19px]">
+                    <div key={index} className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
                       <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
                         {title}
                       </p>
@@ -386,7 +404,7 @@ const CaseStudyPage = () => {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-                  <div className="bg-white border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px]">
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
                     <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
                       42%
                     </p>
@@ -395,7 +413,7 @@ const CaseStudyPage = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px]">
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
                     <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
                       +5%
                     </p>
@@ -404,7 +422,7 @@ const CaseStudyPage = () => {
                     </p>
                   </div>
                   
-                  <div className="bg-white border border-[#dedede] rounded-lg p-4 md:p-5 lg:p-[19px]">
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
                     <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
                       17%
                     </p>

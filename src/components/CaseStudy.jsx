@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const CaseStudy = ({ company, title, description, tags, metrics, bgColor, image, caseStudyId }) => {
+const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverColor, image, caseStudyId, onHover, onLeave, isHovered, hoverBorderColor }) => {
+  const cardRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (onHover && cardRef.current) {
+      onHover(cardRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (onLeave) {
+      onLeave();
+    }
+  };
+
+  // Use hoverColor if provided, otherwise fall back to bgColor, then default
+  const displayBgColor = isHovered 
+    ? (hoverColor || bgColor || '#FEFAF6')
+    : '#FEFAF6';
+
   return (
     <div 
-      className="relative w-full rounded-[10px] overflow-hidden transition-transform duration-300 hover:scale-[1.01] border border-[#F4EAE1]" 
-      style={{ backgroundColor: '#FEFAF6' }}
+      ref={cardRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative w-full rounded-[10px] overflow-hidden transition-all duration-300 hover:scale-[1.01]" 
+      style={{ 
+        backgroundColor: displayBgColor,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: hoverBorderColor,
+        transition: 'background-color 0.4s ease-out, border-color 0.4s ease-out, transform 0.3s ease'
+      }}
     >
       <div className="min-h-[400px] md:min-h-[505px] p-6 md:p-10 lg:p-[54px] flex flex-col lg:flex-row gap-8 lg:gap-0">
         {/* Left Content */}

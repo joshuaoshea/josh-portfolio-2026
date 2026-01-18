@@ -46,6 +46,8 @@ export const caseStudies = [
       { value: "62%", label: "OVERALL SATISFACTION" }
     ],
     bgColor: "#b1d1f6",
+    hoverColor: "#FBEDE6",
+    hoverBorderColor: "#E8D5C8",
     image: null,
     link: "#"
   },
@@ -60,6 +62,8 @@ export const caseStudies = [
       { value: "62%", label: "OVERALL SATISFACTION" }
     ],
     bgColor: "#b1aaec",
+    hoverColor: "#FBF9E6",
+    hoverBorderColor: "#E8E5C8",
     image: null,
     link: "#"
   },
@@ -74,6 +78,8 @@ export const caseStudies = [
       { value: "17%", label: "REDUCTION IN ADMIN ERROR" }
     ],
     bgColor: "#d8ecaa",
+    hoverColor: "#E6F0FB",
+    hoverBorderColor: "#C2D6E8",
     image: "/images/work/genesys-digital-channels.png",
     link: "#"
   }

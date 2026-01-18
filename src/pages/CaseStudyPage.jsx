@@ -254,11 +254,11 @@ const CaseStudyPage = () => {
 
               {/* Discovery Section */}
               <section id="discovery" className="scroll-mt-24">
-                <div className="inline-flex items-center gap-2 bg-[#f8f8f8] rounded-full px-4 py-2.5 mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#32404f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                  <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     DISCOVERY
                   </span>
                 </div>
@@ -315,11 +315,11 @@ const CaseStudyPage = () => {
 
               {/* Ideation Section */}
               <section id="ideation" className="scroll-mt-24">
-                <div className="inline-flex items-center gap-2 bg-[#f8f8f8] rounded-full px-4 py-2.5 mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#32404f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                  <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     IDEATION
                   </span>
                 </div>
@@ -337,11 +337,11 @@ const CaseStudyPage = () => {
 
               {/* Research Section */}
               <section id="research" className="scroll-mt-24">
-                <div className="inline-flex items-center gap-2 bg-[#f8f8f8] rounded-full px-4 py-2.5 mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#32404f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                  <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     RESEARCH
                   </span>
                 </div>
@@ -362,31 +362,69 @@ const CaseStudyPage = () => {
                   />
                 </div>
 
-                <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] text-center mb-4 md:mb-6">
-                  Requirements gathering workshop with stakeholders
+                <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
+                  High-level insights from customer testing
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  {['FEATURE RATINGS', 'FEATURE RATINGS', 'FEATURE RATINGS'].map((title, index) => (
-                    <div key={index} className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                        {title}
-                      </p>
-                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                        Companies included a varied number of feature ratings in their forms. Target: Includes three ratings and requires size-specific questions.
-                      </p>
-                    </div>
-                  ))}
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      LACK OF VISIBILITY LIMITS CONFIDENCE
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      Power users struggle to monitor the health and activity of live digital channels, making performance tracking and reporting inefficient.
+                    </p>
+                  </div>
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      TESTING CRITICAL BEFORE LAUNCH
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      Admins need a live preview or sandbox environment to confidently test configurations before deploying to production.
+                    </p>
+                  </div>
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      UNCLEAR DEPLOYMENT STATES
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      Without a centralized view that clearly distinguishes draft, live, and at-risk deployments, admins find it difficult to manage channels at scale.
+                    </p>
+                  </div>
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      EXPLORATION DRIVES ADOPTION
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      Admins want plug-and-play templates to quickly experiment with digital channels and understand their potential value.
+                    </p>
+                  </div>
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      PRE-LAUNCH REVIEW BUILDS TRUST
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      A detailed review mode is essential for admins to validate configurations and catch issues before deployment.
+                    </p>
+                  </div>
+                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                      FLEXIBILITY BEYOND LAUNCH
+                    </p>
+                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      Admins expect to evolve deployments over time, adding functionality without having to recreate channels from scratch.
+                    </p>
+                  </div>
                 </div>
               </section>
 
               {/* Impact Section */}
               <section id="impact" className="scroll-mt-24">
-                <div className="inline-flex items-center gap-2 bg-[#f8f8f8] rounded-full px-4 py-2.5 mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#32404f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                  <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     IMPACT
                   </span>
                 </div>

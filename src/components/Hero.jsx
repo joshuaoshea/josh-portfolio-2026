@@ -3,7 +3,7 @@ import { personalInfo, experience, socialLinks } from '../constants/portfolio';
 
 const Hero = () => {
   return (
-    <section id="about" className="pt-[120px] md:pt-[140px] pb-[75px] px-6 md:px-12 lg:px-[50px]">
+    <section id="about" className="pt-[120px] md:pt-[140px] pb-[75px] px-6 md:px-12 lg:px-[50px] relative z-10">
       <div className="max-w-[1390px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-[72px]">
         {/* Left Side - Main Intro */}
         <div className="flex flex-col gap-2 max-w-[730px]">

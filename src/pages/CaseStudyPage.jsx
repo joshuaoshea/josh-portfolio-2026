@@ -1,13 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import CaseStudySidebar from '../components/CaseStudySidebar';
-import IdeationCarousel from '../components/IdeationCarousel';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { caseStudies } from '../constants/portfolio';
 
 const CaseStudyPage = () => {
   const { id } = useParams();
   const goalCard1 = useScrollAnimation({ threshold: 0.2 });
   const goalCard2 = useScrollAnimation({ threshold: 0.2 });
+
+  // Flowchart zoom state
+  const [isFlowchartZoomed, setIsFlowchartZoomed] = React.useState(false);
 
   // Solution image animations
   const solutionImg1 = useScrollAnimation({ threshold: 0.2 });
@@ -15,33 +18,30 @@ const CaseStudyPage = () => {
   const solutionImg4 = useScrollAnimation({ threshold: 0.2 });
   const solutionImg5 = useScrollAnimation({ threshold: 0.2 });
 
-  // Ideation wireframe images
-  const ideationImages = [
-    {
-      src: "/images/case-studies/genesys/lo-fi-1.png",
-      alt: "Low-fidelity wireframe 1",
-      caption: "LANDING PAGE DESIGNS"
-    },
-    {
-      src: "/images/case-studies/genesys/lo-fi-2.png",
-      alt: "Low-fidelity wireframe 2",
-      caption: "SETUP EXPERIENCE"
-    }
-  ];
+  // Find the case study data based on the ID
+  const caseStudyData = caseStudies.find(cs => cs.id === id);
 
-  // This is placeholder data - in a real app, you'd fetch this based on the ID
-  const caseStudy = {
-    category: "PLATFORM UNIFICATION",
-    title: "Simplifying Digital Channel Deployment Across Genesys",
-    type: "Web App Unification",
-    role: "Lead Designer",
-    collaborators: "Product Management, UX Research Engineering, Design Systems.",
-    timeline: "Q3-Q4 2022",
-    summary: "I led the design of a unified digital channel setup experience at Genesys. Consistent feedback from Admins suggested that our setup experience was disjointed making it difficult to manage at scale.",
-    outcome: "The outcome was a more intuitive, consistent deployment experience that improved admin efficiency, reduced cognitive load, and enabled customers to scale there digital offerings faster.",
-    businessGoal: "Enable scalable digital channel growth by replacing fragmented setup workflows supporting faster channel launches and targeting 5% year-over-year increase in digital channel adoption.",
-    userImpact: "Reduced time and effort for admins to configure and deploy digital channels by simplifying setup flows, minimizing errors, and lowering the cognitive load required to launch and manage."
-  };
+  // If case study not found, redirect to home
+  if (!caseStudyData || !caseStudyData.pageData) {
+    return <Navigate to="/" replace />;
+  }
+
+  const caseStudy = caseStudyData.pageData;
+  const heroImagePath = `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/hero.png`;
+  
+  // For Zendesk case studies, use workshop-findings image in Discovery section
+  const gapAnalysisPath = id.includes('zendesk')
+    ? `/images/case-studies/zendesk/workshop-findings.png`
+    : `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/gap-analysis.png`;
+  
+  // For Zendesk case studies, use special workshop-findings image in Research section
+  const researchInsightsPath = id.includes('zendesk') 
+    ? `/images/case-studies/zendesk/workshop-findings.png`
+    : `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/research-insights.png`;
+  
+  // Extract company name for solution images folder
+  const companyFolder = id.includes('genesys') ? 'genesys' : id.includes('zendesk') ? 'zendesk' : '';
+  const solutionBasePath = `/images/case-studies/${companyFolder}`;
 
   return (
     <div className="min-h-screen pt-[90px]" style={{ backgroundColor: '#FDF7F2' }}>
@@ -58,15 +58,15 @@ const CaseStudyPage = () => {
                 {caseStudy.category}
               </p>
               <h1 className="text-primary text-3xl md:text-4xl lg:text-[52px] font-medium font-manrope leading-[40px] lg:leading-[65px]">
-                {caseStudy.title}
+                {caseStudyData.title}
               </h1>
             </div>
 
             {/* Hero Image */}
-            <div className="bg-[#b1d1f6] rounded-lg p-6 md:p-8 lg:p-[31px] mb-8 md:mb-12 lg:mb-[40px]">
+            <div className="rounded-lg p-6 md:p-8 lg:p-[31px] mb-8 md:mb-12 lg:mb-[40px]" style={{ backgroundColor: caseStudyData.bgColor }}>
               <img 
-                src="/images/case-studies/genesys/hero.png"
-                alt="Genesys Digital Channel Deployment - Hero Image"
+                src={heroImagePath}
+                alt={`${caseStudyData.company} - Hero Image`}
                 className="rounded-lg w-full h-auto"
               />
             </div>
@@ -87,7 +87,7 @@ const CaseStudyPage = () => {
                         {caseStudy.summary}
                       </p>
                       <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
-                        I evaluated existing digital channel setup experiences to design a centralized, reusable framework that replaced fragmented, channel-specific workflows, using Web Messenger as the proof of concept.
+                        {caseStudy.summaryExtended}
                       </p>
                       
                       {/* Outcome */}
@@ -188,10 +188,10 @@ const CaseStudyPage = () => {
                 
                 {/* Solution Images */}
                 <div className="space-y-6 md:space-y-8">
-                  <div className="bg-[#b1d1f6] rounded-lg p-6 md:p-8 lg:p-[34px]">
+                  <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
                     <img 
                       ref={solutionImg1.ref}
-                      src="/images/case-studies/genesys/solution-1.png"
+                      src={`${solutionBasePath}/solution-1.png`}
                       alt="Solution overview"
                       className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
                         solutionImg1.isVisible 
@@ -201,7 +201,7 @@ const CaseStudyPage = () => {
                     />
                   </div>
                   
-                  <div className="bg-[#b1d1f6] rounded-lg p-6 md:p-8 lg:p-[34px]">
+                  <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
                     <div 
                       ref={solutionImg2.ref}
                       className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ease-out ${
@@ -211,12 +211,12 @@ const CaseStudyPage = () => {
                       }`}
                     >
                       <img 
-                        src="/images/case-studies/genesys/solution-2.png"
+                        src={`${solutionBasePath}/solution-2.png`}
                         alt="Solution detail 1"
                         className="rounded-lg w-full h-auto"
                       />
                       <img 
-                        src="/images/case-studies/genesys/solution-3.png"
+                        src={`${solutionBasePath}/solution-3.png`}
                         alt="Solution detail 2"
                         className="rounded-lg w-full h-auto"
                       />
@@ -224,10 +224,10 @@ const CaseStudyPage = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-                    <div className="bg-[#b1d1f6] rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden">
+                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
                       <img 
                         ref={solutionImg4.ref}
-                        src="/images/case-studies/genesys/solution-4.png"
+                        src={`${solutionBasePath}/solution-4.png`}
                         alt="Solution detail 3"
                         className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
                           solutionImg4.isVisible 
@@ -236,10 +236,10 @@ const CaseStudyPage = () => {
                         }`}
                       />
                     </div>
-                    <div className="bg-[#b1d1f6] rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden">
+                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
                       <img 
                         ref={solutionImg5.ref}
-                        src="/images/case-studies/genesys/solution-5.png"
+                        src={`${solutionBasePath}/solution-5.png`}
                         alt="Solution detail 4"
                         className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
                           solutionImg5.isVisible 
@@ -256,7 +256,8 @@ const CaseStudyPage = () => {
               <section id="discovery" className="scroll-mt-24">
                 <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="6" cy="6" r="4.25" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 9L12.25 12.25" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     DISCOVERY
@@ -264,51 +265,61 @@ const CaseStudyPage = () => {
                 </div>
                 
                 <h2 className="text-primary text-2xl md:text-3xl lg:text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] mb-4 md:mb-6">
-                  Understanding the current state and competitive gaps
+                  {caseStudy.discoveryTitle}
                 </h2>
                 
-                <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px] mb-6 md:mb-8">
-                  I mapped the existing digital channel setup experience and conducted a competitive analysis across seven enterprise CCaaS platforms to identify usability gaps and structural weaknesses. This work highlighted where fragmented workflows and inconsistent patterns put Genesys at a disadvantage, directly informing the design principles going forward.
+                <div className="space-y-4 md:space-y-5 mb-6 md:mb-8">
+                  <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                  {caseStudy.discoveryDescription}
                 </p>
+                  {caseStudy.discoveryDescriptionExtended && (
+                    <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                      {caseStudy.discoveryDescriptionExtended}
+                    </p>
+                  )}
+                </div>
 
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
-                  Analysis Insights
+                  Workshop Results
                 </h3>
 
+                {/* Workshop Results Image */}
+                <div className="bg-[rgba(239,239,239,0.75)] rounded-lg p-6 md:p-8 lg:p-[15px] min-h-[300px] lg:min-h-[472px] flex items-center justify-center mb-6 md:mb-8">
+                  <img 
+                    src={gapAnalysisPath}
+                    alt="Workshop results and analysis"
+                    className="w-full h-full object-contain rounded-lg"
+                  />
+                </div>
+
+                {/* Discovery Insights Cards - 2 Column Layout */}
                 <div className="flex flex-col lg:flex-row gap-4 md:gap-5">
+                  {/* Left Column - First 3 cards */}
                   <div className="flex-1 space-y-4 md:space-y-[17px]">
-                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                        INSIGHT #1
-                      </p>
-                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                        Genesys' fragmented product experience limits visibility of digital channel capabilities, putting it at a disadvantage compared to competitors with more centralized and discoverable offerings.
-                      </p>
-                    </div>
-                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                        INSIGHT #2
-                      </p>
-                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                        Compared to competitors, Genesys makes flow customization harder for non-technical users, forcing them to accept unnecessary complexity to achieve the flexibility they need.
-                      </p>
-                    </div>
-                    <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                        INSIGHT #3
-                      </p>
-                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                        Competitors that offer hands-on, learn-by-doing onboarding better communicate product value upfront, while Genesys relies on experiences that delay understanding of what's possible.
-                      </p>
-                    </div>
+                    {caseStudy.discoveryInsights.slice(0, 3).map((insight, index) => (
+                      <div key={index} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                        <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                          {insight.title}
+                        </p>
+                        <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                          {insight.description}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                   
-                  <div className="lg:w-[491px] bg-[rgba(239,239,239,0.75)] rounded-lg min-h-[300px] lg:min-h-[472px] pl-4 md:pl-6 lg:pl-[15px] pt-4 md:pt-6 lg:pt-[15px] pb-4 md:pb-6 lg:pb-[15px] flex items-center justify-center">
-                    <img 
-                      src="/images/case-studies/genesys/gap-analysis.png"
-                      alt="Gap analysis visual"
-                      className="w-full h-full object-contain rounded-lg"
-                    />
+                  {/* Right Column - Last 3 cards */}
+                  <div className="flex-1 space-y-4 md:space-y-[17px]">
+                    {caseStudy.discoveryInsights.slice(3, 6).map((insight, index) => (
+                      <div key={index + 3} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
+                        <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
+                          {insight.title}
+                        </p>
+                        <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                          {insight.description}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </section>
@@ -317,7 +328,8 @@ const CaseStudyPage = () => {
               <section id="ideation" className="scroll-mt-24">
                 <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7 2.5C5.067 2.5 3.5 4.067 3.5 6C3.5 7.2 4.1 8.25 5 8.9V10C5 10.55 5.45 11 6 11H8C8.55 11 9 10.55 9 10V8.9C9.9 8.25 10.5 7.2 10.5 6C10.5 4.067 8.933 2.5 7 2.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M5.5 11.5H8.5" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
                     IDEATION
@@ -325,149 +337,165 @@ const CaseStudyPage = () => {
                 </div>
                 
                 <h2 className="text-primary text-2xl md:text-3xl lg:text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] mb-4 md:mb-6">
-                  Early Ideation: Translating Research into Structure
+                  Taking a holistic system thinking approach
                 </h2>
                 
-                <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px] mb-6 md:mb-8">
-                  I explored early concepts through information architecture and low-fidelity wireframes, grounded in collaborative research with the UX research team and insights from prior competitive and gap analysis. These explorations helped define high-level requirements and user stories, aligning early solutions to validated admin needs and market expectations.
-                </p>
+                <div className="space-y-4 md:space-y-5 mb-6 md:mb-8">
+                  <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                    Designing the experience as a system, rather than as a single screen helped surface dependencies, reduce downstream risk, and create a more scalable foundation.
+                  </p>
+                  <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                    I began by mapping user flows for agents, supervisors, and QA roles to understand how a unified post-call experience needed to work across permissions, responsibilities, and services. These flows clarify ownership, identify key integration points, and align on which cross-functional teams needed to collaborate.
+                  </p>
+                </div>
 
-                <IdeationCarousel images={ideationImages} />
+                {/* Flow Diagram */}
+                {caseStudy.flowDiagram && (
+                  <>
+                    <div 
+                      className="bg-[rgba(239,239,239,0.75)] rounded-lg py-[15px] flex items-center justify-center mb-6 md:mb-8 min-h-[300px] lg:min-h-[633px] cursor-zoom-in group"
+                      onClick={() => setIsFlowchartZoomed(true)}
+                    >
+                      <div className="relative w-full px-4">
+                        <img 
+                          src={caseStudy.flowDiagram}
+                          alt="User flow diagram showing system architecture"
+                          className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
+                        />
+                        {/* Magnify Icon Overlay on Hover */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center rounded-lg">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3 shadow-lg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#32404f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M21 21L16.65 16.65" stroke="#32404f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M11 8V14M8 11H14" stroke="#32404f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Zoomed Modal */}
+                    {isFlowchartZoomed && (
+                      <div 
+                        className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-zoom-out"
+                        onClick={() => setIsFlowchartZoomed(false)}
+                      >
+                        {/* Close Button */}
+                        <button
+                          onClick={() => setIsFlowchartZoomed(false)}
+                          className="absolute top-4 right-4 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all hover:scale-110 z-10"
+                          aria-label="Close zoom"
+                        >
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#32404f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+
+                        {/* Zoomed Image */}
+                        <img
+                          src={caseStudy.flowDiagram}
+                          alt="User flow diagram showing system architecture - Full size"
+                          className="max-w-full max-h-full object-contain"
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Early Ideation heading and text */}
+                <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
+                  Early Ideation
+                </h3>
+
+                <div className="space-y-4 md:space-y-5 mb-6 md:mb-8">
+                  <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                    Using the flows as a foundation, I explored low-fidelity layouts and interaction patterns, then created an early interactive prototype using Figma Make to quickly test structure, hierarchy, and access models.
+                  </p>
+                </div>
+
+                {/* Wireframe Images - Static Display or Interactive Prototype */}
+                <div className="space-y-2">
+                  {caseStudy.ideationImages && caseStudy.ideationImages.map((image, index) => (
+                    <React.Fragment key={index}>
+                      {/* Wireframe image or prototype */}
+                      <div className="bg-[rgba(239,239,239,0.75)] rounded-lg py-[15px] flex flex-col gap-[10px] items-center min-h-[300px] lg:min-h-[501px]">
+                        {!image.prototypeUrl && (
+                          <p className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                            {index + 1}. {image.caption || image.alt}
+                          </p>
+                        )}
+                        <div className="flex items-center justify-center px-4 w-full">
+                          {image.prototypeUrl ? (
+                            // Render interactive Figma prototype
+                            <iframe 
+                              src={image.prototypeUrl}
+                              className="w-full rounded-lg border-0"
+                              style={{ height: '750px' }}
+                              allowFullScreen
+                              title={image.alt}
+                            />
+                          ) : (
+                            // Render static image
+                            <img 
+                              src={image.src}
+                              alt={image.alt}
+                              className="max-w-full h-auto object-contain rounded-lg"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  ))}
+                </div>
               </section>
 
-              {/* Research Section */}
+              {/* Research Section - Early Access Program */}
               <section id="research" className="scroll-mt-24">
                 <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                    RESEARCH
+                    DISCOVERY
                   </span>
                 </div>
                 
                 <h2 className="text-primary text-2xl md:text-3xl lg:text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] mb-4 md:mb-6">
-                  Validating Direction Through Customer Research
+                  {caseStudy.researchTitle}
                 </h2>
                 
-                <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px] mb-6 md:mb-8">
-                  I validated early concepts through interviews with 10 customers, focusing on usage patterns, unmet needs, and the operational impact of proposed solutions. The findings provided confidence in the chosen direction and highlighted opportunities to further simplify setup and deployment.
-                </p>
-
-                <div className="bg-[rgba(239,239,239,0.75)] rounded-lg p-6 md:p-8 lg:p-[15px] min-h-[300px] lg:min-h-[472px] flex items-center justify-center mb-6 md:mb-8">
-                  <img 
-                    src="/images/case-studies/genesys/research-insights.png"
-                    alt="Research findings and insights"
-                    className="w-full h-full object-contain rounded-lg"
-                  />
+                <div className="space-y-4 md:space-y-5 mb-6 md:mb-8">
+                  <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                    {caseStudy.researchDescription}
+                  </p>
                 </div>
 
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
-                  High-level insights from customer testing
+                  {caseStudy.researchSubheading}
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      LACK OF VISIBILITY LIMITS CONFIDENCE
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      Power users struggle to monitor the health and activity of live digital channels, making performance tracking and reporting inefficient.
-                    </p>
-                  </div>
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      TESTING CRITICAL BEFORE LAUNCH
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      Admins need a live preview or sandbox environment to confidently test configurations before deploying to production.
-                    </p>
-                  </div>
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      UNCLEAR DEPLOYMENT STATES
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      Without a centralized view that clearly distinguishes draft, live, and at-risk deployments, admins find it difficult to manage channels at scale.
-                    </p>
-                  </div>
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      EXPLORATION DRIVES ADOPTION
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      Admins want plug-and-play templates to quickly experiment with digital channels and understand their potential value.
-                    </p>
-                  </div>
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      PRE-LAUNCH REVIEW BUILDS TRUST
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      A detailed review mode is essential for admins to validate configurations and catch issues before deployment.
-                    </p>
-                  </div>
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
-                      FLEXIBILITY BEYOND LAUNCH
-                    </p>
-                    <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
-                      Admins expect to evolve deployments over time, adding functionality without having to recreate channels from scratch.
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Impact Section */}
-              <section id="impact" className="scroll-mt-24">
-                <div className="inline-flex items-center gap-2 bg-[#FF5500] rounded-full px-4 py-2.5 mb-4">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.75 10.5V3.5C1.75 2.94772 2.19772 2.5 2.75 2.5H11.25C11.8023 2.5 12.25 2.94772 12.25 3.5V10.5C12.25 11.0523 11.8023 11.5 11.25 11.5H2.75C2.19772 11.5 1.75 11.0523 1.75 10.5Z" stroke="#FDF7F2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span className="text-[#FDF7F2] text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                    IMPACT
-                  </span>
-                </div>
-                
-                <h2 className="text-primary text-2xl md:text-3xl lg:text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] mb-4 md:mb-6">
-                  Measured Impact and Path Forward
-                </h2>
-                
                 <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px] mb-6 md:mb-8">
-                  Insights from a post–early access program with admins confirmed reductions in setup effort and errors. Future work focuses on expanding the framework to additional channels, strengthening setup review, and improving real-time preview for the messenger widget.
+                  {caseStudy.researchExtendedDescription}
                 </p>
 
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-6 md:mb-8">
-                  Overall impact for MVP
+                  {caseStudy.researchImpactTitle}
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
-                    <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
-                      42%
-                    </p>
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                      REDUCTION IN SETUP TIME
-                    </p>
-                  </div>
-                  
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
-                    <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
-                      +5%
-                    </p>
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                      INCREASED YOY ADOPTION (DIGITAL CHANNELS)
-                    </p>
-                  </div>
-                  
-                  <div className="bg-[#FEFAF6] border border-[#F4EAE1] rounded-lg p-4 md:p-5 lg:p-[19px]">
-                    <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-3 md:mb-4">
-                      17%
-                    </p>
-                    <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                      REDUCTION IN ADMIN ERROR
-                    </p>
-                  </div>
+                {/* Impact Metrics - 2 columns grid, 3rd card aligns with first column */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-[15px] md:gap-y-[15px]">
+                  {caseStudy.researchMetrics && caseStudy.researchMetrics.map((metric, index) => (
+                    <div key={index} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] flex flex-col justify-center min-h-[146px]">
+                      <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-2 md:mb-3">
+                        {metric.value}
+                      </p>
+                      <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </section>
             </div>

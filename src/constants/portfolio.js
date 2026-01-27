@@ -94,6 +94,8 @@ export const caseStudies = [
       ideationTitle: "Designing a unified post-call intelligence framework",
       ideationDescription: "I explored design concepts through user flows and wireframes, grounded in research with customer success teams and insights from competitive analysis. These explorations helped define requirements for a flexible, scalable post-call system that could adapt to different voice channel types.",
       flowDiagram: "/images/case-studies/zendesk/Flowchart_resized.png",
+      ideationSubheading: "Early Ideation",
+      ideationExtendedDescription: "Using the flows as a foundation, I explored low-fidelity layouts and interaction patterns, then created an early interactive prototype using Figma Make to quickly test structure, hierarchy, and access models.",
       ideationImages: [
         {
           src: "/images/case-studies/zendesk/lo-fi-2.png",
@@ -111,13 +113,6 @@ export const caseStudies = [
         { value: "+3%", label: "INCREASE IN POST-CALL AI ADOPTION" },
         { value: "15%", label: "REDUCTION IN QA TIME" },
         { value: "81%", label: "OVERALL SATISFACTION" }
-      ],
-      impactTitle: "Measured impact and future enhancements",
-      impactDescription: "Early access program results with 20 customer organizations confirmed improvements in post-call handling time and agent satisfaction. Future work focuses on expanding AI summarization capabilities, adding multilingual support, and integrating deeper analytics for quality monitoring teams.",
-      impactMetrics: [
-        { value: "1.1%", label: "ATC CONVERSION" },
-        { value: "62%", label: "OVERALL SATISFACTION" },
-        { value: "28%", label: "REDUCTION IN POST-CALL TIME" }
       ]
     }
   },
@@ -183,6 +178,8 @@ export const caseStudies = [
       ideationTitle: "Early Ideation: Translating Research into Structure",
       ideationDescription: "I explored early concepts through information architecture and low-fidelity wireframes, grounded in collaborative research with the UX research team and insights from prior competitive and gap analysis. These explorations helped define high-level requirements and user stories, aligning early solutions to validated admin needs and market expectations.",
       flowDiagram: null, // Add path to flow diagram image when available
+      ideationSubheading: null, // Optional: can add a subheading if needed
+      ideationExtendedDescription: null, // Optional: can add extended description if needed
       ideationImages: [
         {
           src: "/images/case-studies/genesys/lo-fi-1.png",

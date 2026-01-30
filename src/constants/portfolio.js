@@ -42,13 +42,14 @@ export const caseStudies = [
     description: "I led the design for a single, dynamic post-call experience that replaced fragmented comments across all voice call types. The system unified AI transcription, summarization, and multi-channel playback while scaling to support future voice, video and AI Agent workflows",
     tags: ["0 TO 1 DESIGN", "AGENTIC AI", "CCASS"],
     metrics: [
-      { value: "1.1%", label: "ATC CONVERSION" },
-      { value: "62%", label: "OVERALL SATISFACTION" }
+      { value: "+3%", label: "INCREASE IN POST-CALL AI ADOPTION" },
+      { value: "15%", label: "REDUCTION IN QA TIME" }
     ],
     bgColor: "#b1d1f6",
     hoverColor: "#FBEDE6",
     hoverBorderColor: "#E8D5C8",
     image: null,
+    video: "/videos/work/UVC_Home.mp4",
     link: "#",
     // Case Study Page Data
     pageData: {

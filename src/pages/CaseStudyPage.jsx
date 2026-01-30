@@ -29,6 +29,11 @@ const CaseStudyPage = () => {
   const caseStudy = caseStudyData.pageData;
   const heroImagePath = `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/hero.png`;
   
+  // Hero video path for case studies with videos
+  const heroVideoPath = id === 'zendesk-voice-intelligence' 
+    ? '/videos/case-studies/zendesk-uvc/Hero.mp4'
+    : null;
+  
   // For Zendesk case studies, use workshop-findings image in Discovery section
   const gapAnalysisPath = id.includes('zendesk')
     ? `/images/case-studies/zendesk/workshop-findings.png`
@@ -62,14 +67,29 @@ const CaseStudyPage = () => {
               </h1>
             </div>
 
-            {/* Hero Image */}
-            <div className="rounded-lg p-6 md:p-8 lg:p-[31px] mb-8 md:mb-12 lg:mb-[40px]" style={{ backgroundColor: caseStudyData.bgColor }}>
-              <img 
-                src={heroImagePath}
-                alt={`${caseStudyData.company} - Hero Image`}
-                className="rounded-lg w-full h-auto"
-              />
-            </div>
+            {/* Hero Image/Video */}
+            {heroVideoPath ? (
+              <div className="mb-8 md:mb-12 lg:mb-[40px]">
+                <video 
+                  src={heroVideoPath}
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  preload="auto"
+                  className="w-full rounded-lg border-2 border-[#b1d1f6]"
+                  style={{ maxHeight: '600px' }}
+                />
+              </div>
+            ) : (
+              <div className="rounded-lg p-6 md:p-8 lg:p-[31px] mb-8 md:mb-12 lg:mb-[40px]" style={{ backgroundColor: caseStudyData.bgColor }}>
+                <img 
+                  src={heroImagePath}
+                  alt={`${caseStudyData.company} - Hero Image`}
+                  className="rounded-lg w-full h-auto"
+                />
+              </div>
+            )}
 
             {/* All Content Sections */}
             <div className="space-y-8 md:space-y-12 lg:space-y-[40px]">

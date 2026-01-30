@@ -83,6 +83,7 @@ const CaseStudies = () => {
             <CaseStudy 
               key={index} 
               {...study} 
+              video={study.video}
               caseStudyId={study.id}
               onHover={(element) => handleCardHover(index, element)}
               onLeave={handleCardLeave}

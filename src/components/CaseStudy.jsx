@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverColor, image, caseStudyId, onHover, onLeave, isHovered, hoverBorderColor }) => {
+const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverColor, image, video, caseStudyId, onHover, onLeave, isHovered, hoverBorderColor }) => {
   const cardRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -51,9 +51,9 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverC
             {tags.map((tag, index) => (
               <div 
                 key={index}
-                className="bg-[rgba(50,64,79,0.3)] border border-primary rounded-[45px] px-3 md:px-4 py-1 md:py-1.5 transition-transform duration-200 hover:scale-105"
+                className="border border-[#32404F] rounded-[45px] px-3 md:px-4 py-1 md:py-1.5 transition-transform duration-200 hover:scale-105"
               >
-                <p className="text-primary text-[11px] md:text-[13px] font-medium font-manrope tracking-[0.26px]">
+                <p className="text-[#32404F] text-[11px] md:text-[13px] font-medium font-manrope tracking-[0.26px]">
                   {tag}
                 </p>
               </div>
@@ -116,7 +116,16 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverC
 
             {/* Content Area */}
             <div className="bg-[#38393a] h-[calc(100%-40px)] md:h-[calc(100%-53px)] flex items-center justify-center overflow-hidden">
-              {image ? (
+              {video ? (
+                <video 
+                  src={video} 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover object-top"
+                />
+              ) : image ? (
                 <img src={image} alt={title} className="w-full h-full object-cover object-top" />
               ) : (
                 <div className="text-white text-xs md:text-sm opacity-50">Product Screenshot</div>

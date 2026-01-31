@@ -15,6 +15,7 @@ const CaseStudyPage = () => {
   // Solution image animations
   const solutionImg1 = useScrollAnimation({ threshold: 0.2 });
   const solutionImg2 = useScrollAnimation({ threshold: 0.2 });
+  const solutionImg3 = useScrollAnimation({ threshold: 0.2 });
   const solutionImg4 = useScrollAnimation({ threshold: 0.2 });
   const solutionImg5 = useScrollAnimation({ threshold: 0.2 });
 
@@ -206,70 +207,145 @@ const CaseStudyPage = () => {
                   Solution
                 </h2>
                 
-                {/* Solution Images */}
-                <div className="space-y-6 md:space-y-8">
-                  <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
-                    <img 
-                      ref={solutionImg1.ref}
-                      src={`${solutionBasePath}/solution-1.png`}
-                      alt="Solution overview"
-                      className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
-                        solutionImg1.isVisible 
-                          ? 'opacity-100 scale-100' 
-                          : 'opacity-0 scale-110'
-                      }`}
-                    />
-                  </div>
-                  
-                  <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
-                    <div 
-                      ref={solutionImg2.ref}
-                      className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ease-out ${
-                        solutionImg2.isVisible 
-                          ? 'opacity-100 scale-100' 
-                          : 'opacity-0 scale-110'
-                      }`}
-                    >
+                {/* Zendesk Voice Intelligence - Custom Solution Images */}
+                {id === 'zendesk-voice-intelligence' ? (
+                  <div className="space-y-6 md:space-y-8">
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: '#EFF6FE' }}>
                       <img 
-                        src={`${solutionBasePath}/solution-2.png`}
-                        alt="Solution detail 1"
-                        className="rounded-lg w-full h-auto"
-                      />
-                      <img 
-                        src={`${solutionBasePath}/solution-3.png`}
-                        alt="Solution detail 2"
-                        className="rounded-lg w-full h-auto"
+                        ref={solutionImg1.ref}
+                        src={`${solutionBasePath}/active-call.png`}
+                        alt="Active call interface"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg1.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                        style={{ imageRendering: 'high-quality' }}
                       />
                     </div>
-                  </div>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: '#EFF6FE' }}>
+                      <img 
+                        ref={solutionImg2.ref}
+                        src={`${solutionBasePath}/role-based-permissions.png`}
+                        alt="Role-based permissions interface"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg2.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: '#EFF6FE' }}>
+                      <img 
+                        ref={solutionImg3.ref}
+                        src={`${solutionBasePath}/summary-editing.png`}
+                        alt="Summary editing interface"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg3.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: '#EFF6FE' }}>
                       <img 
                         ref={solutionImg4.ref}
-                        src={`${solutionBasePath}/solution-4.png`}
-                        alt="Solution detail 3"
+                        src={`${solutionBasePath}/call-transcript.png`}
+                        alt="Call transcript interface"
                         className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
                           solutionImg4.isVisible 
                             ? 'opacity-100 scale-100' 
                             : 'opacity-0 scale-110'
                         }`}
+                        style={{ imageRendering: 'high-quality' }}
                       />
                     </div>
-                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: '#EFF6FE' }}>
                       <img 
                         ref={solutionImg5.ref}
-                        src={`${solutionBasePath}/solution-5.png`}
-                        alt="Solution detail 4"
+                        src={`${solutionBasePath}/call-details.png`}
+                        alt="Call details interface"
                         className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
                           solutionImg5.isVisible 
                             ? 'opacity-100 scale-100' 
                             : 'opacity-0 scale-110'
                         }`}
+                        style={{ imageRendering: 'high-quality' }}
                       />
                     </div>
                   </div>
-                </div>
+                ) : (
+                  /* Genesys Digital Channels - Original Solution Images */
+                  <div className="space-y-6 md:space-y-8">
+                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <img 
+                        ref={solutionImg1.ref}
+                        src={`${solutionBasePath}/solution-1.png`}
+                        alt="Solution overview"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg1.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                      />
+                    </div>
+                    
+                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <div 
+                        ref={solutionImg2.ref}
+                        className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 transition-all duration-700 ease-out ${
+                          solutionImg2.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                      >
+                        <img 
+                          src={`${solutionBasePath}/solution-2.png`}
+                          alt="Solution detail 1"
+                          className="rounded-lg w-full h-auto"
+                        />
+                        <img 
+                          src={`${solutionBasePath}/solution-3.png`}
+                          alt="Solution detail 2"
+                          className="rounded-lg w-full h-auto"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+                      <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
+                        <img 
+                          ref={solutionImg4.ref}
+                          src={`${solutionBasePath}/solution-4.png`}
+                          alt="Solution detail 3"
+                          className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                            solutionImg4.isVisible 
+                              ? 'opacity-100 scale-100' 
+                              : 'opacity-0 scale-110'
+                          }`}
+                        />
+                      </div>
+                      <div className="rounded-lg p-6 md:p-8 lg:p-[34px] overflow-hidden" style={{ backgroundColor: caseStudyData.bgColor }}>
+                        <img 
+                          ref={solutionImg5.ref}
+                          src={`${solutionBasePath}/solution-5.png`}
+                          alt="Solution detail 4"
+                          className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                            solutionImg5.isVisible 
+                              ? 'opacity-100 scale-100' 
+                              : 'opacity-0 scale-110'
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </section>
 
               {/* Discovery Section */}

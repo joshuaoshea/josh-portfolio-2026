@@ -28,26 +28,43 @@ const CaseStudyPage = () => {
   }
 
   const caseStudy = caseStudyData.pageData;
-  const heroImagePath = `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/hero.png`;
+  
+  // Handle zendesk-embedded-voice with independent image paths
+  const isEmbeddedVoice = id === 'zendesk-embedded-voice';
+  
+  const heroImagePath = isEmbeddedVoice
+    ? `/images/case-studies/zendesk-embedded-voice/hero.png`
+    : `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/hero.png`;
   
   // Hero video path for case studies with videos
   const heroVideoPath = id === 'zendesk-voice-intelligence' 
     ? '/videos/case-studies/zendesk-uvc/Hero.mp4'
+    : id === 'zendesk-embedded-voice'
+    ? '/videos/case-studies/zendesk-embedded-voice/embedded_voice_hero.mp4'
     : null;
   
-  // For Zendesk case studies, use workshop-findings image in Discovery section
-  const gapAnalysisPath = id.includes('zendesk')
+  // For Zendesk case studies, use workshop-findings image in Discovery section (except embedded-voice)
+  const gapAnalysisPath = isEmbeddedVoice
+    ? `/images/case-studies/zendesk-embedded-voice/gap-analysis.png`
+    : id.includes('zendesk')
     ? `/images/case-studies/zendesk/workshop-findings.png`
     : `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/gap-analysis.png`;
   
-  // For Zendesk case studies, use special workshop-findings image in Research section
-  const researchInsightsPath = id.includes('zendesk') 
+  // For Zendesk case studies, use special workshop-findings image in Research section (except embedded-voice)
+  const researchInsightsPath = isEmbeddedVoice
+    ? `/images/case-studies/zendesk-embedded-voice/research-insights.png`
+    : id.includes('zendesk') 
     ? `/images/case-studies/zendesk/workshop-findings.png`
     : `/images/case-studies/${id.replace('-digital-channels', '').replace('zendesk-', '')}/research-insights.png`;
   
   // Extract company name for solution images folder
-  const companyFolder = id.includes('genesys') ? 'genesys' : id.includes('zendesk') ? 'zendesk' : '';
-  const solutionBasePath = `/images/case-studies/${companyFolder}`;
+  const solutionBasePath = isEmbeddedVoice
+    ? `/images/case-studies/zendesk-embedded-voice`
+    : id.includes('genesys') 
+    ? `/images/case-studies/genesys`
+    : id.includes('zendesk') 
+    ? `/images/case-studies/zendesk`
+    : '';
 
   return (
     <div className="min-h-screen pt-[90px]" style={{ backgroundColor: '#FDF7F2' }}>
@@ -70,7 +87,7 @@ const CaseStudyPage = () => {
 
             {/* Hero Image/Video */}
             {heroVideoPath ? (
-              <div className="mb-8 md:mb-12 lg:mb-[40px]">
+              <div className="rounded-lg p-6 md:p-8 lg:p-[31px] mb-8 md:mb-12 lg:mb-[40px]" style={{ backgroundColor: caseStudyData.bgColor }}>
                 <video 
                   src={heroVideoPath}
                   autoPlay 
@@ -78,8 +95,8 @@ const CaseStudyPage = () => {
                   muted 
                   playsInline
                   preload="auto"
-                  className="w-full rounded-lg border-2 border-[#b1d1f6]"
-                  style={{ maxHeight: '600px' }}
+                  className="w-full rounded-lg"
+                  style={{ maxHeight: '600px', objectFit: 'contain' }}
                 />
               </div>
             ) : (
@@ -207,6 +224,20 @@ const CaseStudyPage = () => {
                   Solution
                 </h2>
                 
+                {/* End-User Experience Section */}
+                {caseStudy.solutionEndUserTitle && (
+                  <div className="mt-6 md:mt-8 mb-6 md:mb-8">
+                    <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-3 md:mb-4">
+                      {caseStudy.solutionEndUserTitle}
+                    </h3>
+                    {caseStudy.solutionEndUserDescription && (
+                      <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                        {caseStudy.solutionEndUserDescription}
+                      </p>
+                    )}
+                  </div>
+                )}
+                
                 {/* Zendesk Voice Intelligence - Custom Solution Images */}
                 {id === 'zendesk-voice-intelligence' ? (
                   <div className="space-y-6 md:space-y-8">
@@ -277,6 +308,83 @@ const CaseStudyPage = () => {
                             : 'opacity-0 scale-110'
                         }`}
                         style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                  </div>
+                ) : isEmbeddedVoice ? (
+                  /* Zendesk Embedded Voice - Independent Solution Images */
+                  <div className="space-y-6 md:space-y-8">
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <img 
+                        src={`${solutionBasePath}/InProgress.png`}
+                        alt="In progress state"
+                        className="rounded-lg w-full h-auto"
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <img 
+                        ref={solutionImg2.ref}
+                        src={`${solutionBasePath}/Online.png`}
+                        alt="Online state"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg2.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <img 
+                        ref={solutionImg3.ref}
+                        src={`${solutionBasePath}/Offline.png`}
+                        alt="Offline state"
+                        className={`rounded-lg w-full h-auto transition-all duration-700 ease-out ${
+                          solutionImg3.isVisible 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-110'
+                        }`}
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                    
+                    <div className="rounded-lg p-3 md:p-4 lg:p-5" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <img 
+                        src={`${solutionBasePath}/InProgress_Messaging.png`}
+                        alt="In progress messaging"
+                        className="rounded-lg w-full h-auto"
+                        style={{ imageRendering: 'high-quality' }}
+                      />
+                    </div>
+                    
+                    {/* Admin Section Title */}
+                    {caseStudy.solutionAdminTitle && (
+                      <div className="mt-6 md:mt-8 mb-6 md:mb-8">
+                        <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-3 md:mb-4">
+                          {caseStudy.solutionAdminTitle}
+                        </h3>
+                        {caseStudy.solutionAdminDescription && (
+                          <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                            {caseStudy.solutionAdminDescription}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    
+                    {/* Digital Line Admin Video */}
+                    <div className="rounded-lg p-6 md:p-8 lg:p-[34px]" style={{ backgroundColor: caseStudyData.bgColor }}>
+                      <video 
+                        src="/videos/case-studies/zendesk-embedded-voice/Digital_Line_Admin.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="w-full rounded-lg"
+                        style={{ objectFit: 'contain' }}
                       />
                     </div>
                   </div>
@@ -376,31 +484,36 @@ const CaseStudyPage = () => {
                 </div>
 
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
-                  Workshop Results
+                  Analysis Insights
                 </h3>
 
-                {/* Workshop Results Image */}
-                <div className="bg-[rgba(239,239,239,0.75)] rounded-lg p-6 md:p-8 lg:p-[15px] min-h-[300px] lg:min-h-[472px] flex items-center justify-center mb-6 md:mb-8">
-                  <img 
-                    src={gapAnalysisPath}
-                    alt="Workshop results and analysis"
-                    className="w-full h-full object-contain rounded-lg"
-                  />
-                </div>
-
                 {/* Discovery Insights Cards - Horizontal Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-6 md:mb-8">
                   {caseStudy.discoveryInsights.map((insight, index) => (
                     <div key={index} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] min-h-[146px] transition-all duration-700 ease-out hover:scale-105 hover:shadow-lg cursor-pointer">
                       <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px] mb-2 md:mb-3">
                         {insight.title}
                       </p>
-                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px]">
+                      <p className="text-primary text-sm md:text-base font-normal font-manrope leading-[1.65] tracking-[0.32px] whitespace-pre-line">
                         {insight.description}
                       </p>
                     </div>
                   ))}
                 </div>
+
+                {/* Design Principle Section */}
+                {caseStudy.designPrinciple && (
+                  <div className="relative rounded-lg overflow-hidden" style={{ backgroundColor: '#b1d1f6' }}>
+                    <div className="px-6 md:px-8 lg:px-[50px] py-6 md:py-8 lg:py-[40px] relative z-10">
+                      <p className="text-[#335c8b] text-base md:text-lg lg:text-xl font-medium font-manrope leading-[1.45] tracking-[0.4px] mb-3 md:mb-4">
+                        GUIDING PRINCIPLE
+                      </p>
+                      <p className="text-[#335c8b] text-2xl md:text-3xl lg:text-[32px] font-normal font-manrope leading-[1.45] tracking-[0.64px]">
+                        {caseStudy.designPrinciple}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </section>
 
               {/* Ideation Section */}
@@ -429,6 +542,11 @@ const CaseStudyPage = () => {
                   <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
                     {caseStudy.ideationDescription}
                   </p>
+                  {caseStudy.ideationDescriptionExtended && (
+                    <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                      {caseStudy.ideationDescriptionExtended}
+                    </p>
+                  )}
                 </div>
 
                 {/* Flow Diagram */}
@@ -504,14 +622,14 @@ const CaseStudyPage = () => {
                 )}
 
                 {/* Wireframe Images - Static Display or Interactive Prototype */}
-                <div className="space-y-2">
+                <div className="space-y-6 md:space-y-8">
                   {caseStudy.ideationImages && caseStudy.ideationImages.map((image, index) => (
                     <React.Fragment key={index}>
                       {/* Wireframe image or prototype */}
-                      <div className="bg-[rgba(239,239,239,0.75)] rounded-lg py-[15px] flex flex-col gap-[10px] items-center min-h-[300px] lg:min-h-[501px]">
-                        {!image.prototypeUrl && (
+                      <div className="bg-[rgba(239,239,239,0.75)] rounded-lg py-[15px] flex flex-col gap-[10px] items-center mb-6 md:mb-8">
+                        {!image.prototypeUrl && image.caption && (
                           <p className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                            {index + 1}. {image.caption || image.alt}
+                            {captionNumber}. {image.caption}
                           </p>
                         )}
                         <div className="flex items-center justify-center px-4 w-full">
@@ -534,6 +652,22 @@ const CaseStudyPage = () => {
                           )}
                         </div>
                       </div>
+                      
+                      {/* Subheading and description after image */}
+                      {image.subheading && (
+                        <>
+                          <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
+                            {image.subheading}
+                          </h3>
+                          {image.description && (
+                            <div className="mb-6 md:mb-8">
+                              <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px]">
+                                {image.description}
+                              </p>
+                            </div>
+                          )}
+                        </>
+                      )}
                     </React.Fragment>
                   ))}
                 </div>

@@ -118,9 +118,9 @@ export const caseStudies = [
     }
   },
   {
-    id: "zendesk-ai-voice-agents",
+    id: "zendesk-embedded-voice",
     company: "ZENDESK",
-    title: "Deflecting High-Volume Calls with AI Voice Agents",
+    title: "Embedded Voice — Designing Real-Time Calling for the Web",
     description: "This project focused on enabling call centers to offload routine inquiries to AI without sacrificing control or service quality. I designed admin tools for agent setup, live call monitoring, human takeover, and post-call training to continuously improve AI performance.",
     tags: ["0 TO 1 DESIGN", "AGENTIC AI"],
     metrics: [
@@ -131,7 +131,90 @@ export const caseStudies = [
     hoverColor: "#FBF9E6",
     hoverBorderColor: "#E8E5C8",
     image: null,
-    link: "#"
+    video: "/videos/case-studies/zendesk-embedded-voice/embedded_voice_hero.mp4",
+    link: "#",
+    // Case Study Page Data
+    pageData: {
+      category: "EMBEDDED VOICE & REAL-TIME CALLING",
+      type: "Net new functionality",
+      role: "Lead Designer",
+      collaborators: "Product Management, Engineering, Design Systems.",
+      timeline: "Q1-Q2 2023",
+      summary: "Embedded Voice enables end users to start a real-time voice call directly from on a website using Zendesk Messenger.",
+      summaryExtended: "Delivered as a one-quarter MVP, the project addressed urgent enterprise demand while laying the groundwork for video calling over Voice. I led experience definition across admin setup, end-user entry points, and platform integration, partnering closely with Product and Engineering to scope a phased release that balanced speed, quality, and long-term extensibility.",
+      outcome: "Enabled real-time voice support on the web while creating a future-proof foundation for multimodal customer conversations",
+      businessGoal: "Expanded Zendesk Voice into web-based use cases, unlocking immediate enterprise value while establishing a scalable foundation for future capabilities such as video calling.",
+      userImpact: "Enabled customers to transition from web browsing to live voice support in a single, familiar flow—reducing friction and preserving context.",
+      discoveryTitle: "Understanding the competitive landscape and best practices to be applied.",
+      discoveryDescription: "To shape Embedded Voice, I reviewed how messaging platforms, contact-center suites, and communications APIs approach browser-based calling and chat-to-voice escalation. While implementations differed, consistent patterns emerged across the market.",
+      discoveryDescriptionExtended: null,
+      discoveryInsights: [
+        {
+          title: "INSIGHT #1",
+          description: "Voice works best as an escalation from messaging\nLeading products embed voice within existing conversations to preserve context, rather than treating it as a separate channel or entry point."
+        },
+        {
+          title: "INSIGHT #2",
+          description: "WebRTC constraints must be designed for, not hidden\nSuccessful experiences account for browser support, permissions, and network variability through clear states, staged prompts, and fallback paths."
+        },
+        {
+          title: "INSIGHT #3",
+          description: "Adoption depends on simple, familiar admin models\nCompetitors that reuse existing routing and configuration patterns reduce setup friction and scale more effectively than highly customized solutions."
+        }
+      ],
+      designPrinciple: "Design voice as a purposeful extension of messaging, grounded in familiar patterns, constrained by real-world reliability, and introduced only when it adds clear user value.",
+      ideationTitle: "Ideation: Translating Designs into Requirements",
+      ideationDescription: "Early ideation focused on exploring multiple experience concepts in parallel while pressure-testing them against technical feasibility and delivery timelines. Working closely with Product, I evaluated which interaction models could realistically ship within an MVP.",
+      ideationDescriptionExtended: "Given the complexity of introducing real-time voice into an existing messaging surface, concepts were shaped by what could be built safely and reliably within a single quarter, grounding design decisions in reality rather than idealised solutions.",
+      flowDiagram: null,
+      ideationSubheading: null,
+      ideationExtendedDescription: null,
+      ideationImages: [
+        {
+          src: "/images/case-studies/zendesk-embedded-voice/user-flows-enduser.png",
+          alt: "User flows end user",
+          caption: null
+        },
+        {
+          src: "/images/case-studies/zendesk-embedded-voice/agent-flow.png",
+          alt: "Agent flow",
+          caption: null
+        },
+        {
+          src: "/images/case-studies/zendesk-embedded-voice/admin-flow.png",
+          alt: "Admin flow",
+          caption: null,
+          subheading: "Designing with accessibility in mind",
+          description: "Concepts were reviewed with the Accessibility team to validate key flows such as call entry points, permission states, and in-call controls. This ensured accessibility considerations informed design decisions from the outset rather than being addressed later."
+        },
+        {
+          src: "/images/case-studies/zendesk-embedded-voice/a11y-spec.png",
+          alt: "Accessibility specification",
+          caption: null,
+          subheading: "From Ideation to Phased Delivery",
+          description: "Validated concepts directly informed requirements gathering and user story creation. I collaborated with Product to define phased outcomes and map what was required for each release window, culminating in a shared Jira user story map that aligned design intent, engineering scope, and delivery sequencing."
+        },
+        {
+          src: "/images/case-studies/zendesk-embedded-voice/jira.png",
+          alt: "Jira user story map",
+          caption: null
+        }
+      ],
+      researchTitle: "Validating the embedded voice experience",
+      researchDescription: "I conducted user testing sessions with both end users and support agents to validate the embedded voice experience. The research focused on usability, audio quality perception, and workflow integration effectiveness.",
+      researchSubheading: "Research Goals",
+      researchExtendedDescription: "The research aimed to validate that the embedded voice experience met user expectations for quality and ease of use, while also confirming that it reduced friction compared to traditional voice calling solutions.",
+      researchImpactTitle: "Impact Observed Through User Testing",
+      researchMetrics: [
+        { value: "1.1%", label: "ATC CONVERSION" },
+        { value: "62%", label: "OVERALL SATISFACTION" },
+        { value: "40%", label: "REDUCTION IN CONTEXT SWITCHING" }
+      ],
+      solutionEndUserTitle: "End-user experience",
+      solutionEndUserDescription: "Users can start a voice call directly within Messenger, removing the need to switch channels or leave the website. The experience prioritises clarity, availability, and a seamless transition from chat to real-time support.",
+      solutionAdminTitle: "Admin Experience",
+      solutionAdminDescription: "We introduced a new web-based line type that gives admins the same level of control and routing flexibility as existing PSTN voice lines"
+    }
   },
   {
     id: "genesys-digital-channels",

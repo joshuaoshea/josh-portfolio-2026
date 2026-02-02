@@ -55,6 +55,20 @@ body {
   background: #1e2833;
 }
 
+/* Typewriter cursor animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+}
+
 /* Mouse Scroll Animation Styles */
 .mouse-wrap {
   display: inline-block;

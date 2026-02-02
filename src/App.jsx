@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import CaseStudyPage from './pages/CaseStudyPage';
+import About from './pages/About';
 
 export const HoverContext = createContext();
 
@@ -34,6 +35,7 @@ function AppContent() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
               <Route path="/case-study/:id" element={<CaseStudyPage />} />
             </Routes>
           </main>

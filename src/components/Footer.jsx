@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { socialLinks, personalInfo } from '../constants/portfolio';
 
 const Footer = () => {
@@ -29,13 +30,13 @@ const Footer = () => {
                 </span>
               </a>
               <a 
-                href={socialLinks.cv}
+                href="https://drive.google.com/file/d/1RkGb5ThvmQAudqL8VD7GtRaa4MXtR1kH/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-[#FF5500] hover:bg-[#FF5500]/10 transition-colors duration-200 rounded-[11px] px-[25px] py-[20px] h-[60px] w-full sm:w-[232px] flex items-center justify-center"
               >
                 <span className="text-[#FF5500] text-lg font-medium font-manrope">
-                  RESUME
+                  CV
                 </span>
               </a>
             </div>
@@ -47,19 +48,19 @@ const Footer = () => {
             <div className="flex flex-col gap-3">
               <a 
                 href="#work"
-                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:opacity-70 transition-opacity"
+                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:text-[#FF5500] transition-colors"
               >
                 Work
               </a>
-              <a 
-                href="#about"
-                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:opacity-70 transition-opacity"
+              <Link 
+                to="/about"
+                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:text-[#FF5500] transition-colors"
               >
                 About
-              </a>
+              </Link>
               <a 
                 href="#contact"
-                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:opacity-70 transition-opacity"
+                className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:text-[#FF5500] transition-colors"
               >
                 Connect
               </a>
@@ -73,7 +74,7 @@ const Footer = () => {
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:opacity-70 transition-opacity"
+                  className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:text-[#FF5500] transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -81,7 +82,7 @@ const Footer = () => {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:opacity-70 transition-opacity"
+                  className="text-[#fefaf6] text-xl lg:text-[25px] font-normal font-manrope hover:text-[#FF5500] transition-colors"
                 >
                   Instagram
                 </a>

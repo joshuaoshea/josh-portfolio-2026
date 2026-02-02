@@ -35,19 +35,25 @@ const Topbar = () => {
       
       // If not on home page, navigate to home first
       if (location.pathname !== '/') {
-        navigate('/' + href);
-        // Wait for navigation, then scroll
+        navigate('/');
+        // Wait for navigation, then scroll to hero section
         setTimeout(() => {
-          const element = document.getElementById(sectionId);
+          const element = document.getElementById('hero');
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // Fallback: scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         }, 100);
       } else {
-        // Already on home page, just scroll
-        const element = document.getElementById(sectionId);
+        // Already on home page, scroll to hero section
+        const element = document.getElementById('hero');
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // Fallback: scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }
     }
@@ -70,31 +76,32 @@ const Topbar = () => {
           <div className="px-1.5 py-2.5">
             <p className="text-primary text-sm md:text-base font-medium font-geist">{personalInfo.name}</p>
           </div>
-          <div className="hidden sm:block px-1.5 py-2.5">
-            <p className="text-secondary text-sm md:text-base font-normal font-geist">DUBLIN, IRELAND</p>
-          </div>
         </div>
 
         {/* Navbar - Hidden on mobile, visible on desktop */}
         <nav className="hidden lg:flex gap-11 items-center">
           <a 
-            href="/#work" 
-            onClick={(e) => handleNavClick(e, '#work')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/#hero" 
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a 
-            href="/#about" 
-            onClick={(e) => handleNavClick(e, '#about')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/about" 
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              navigate('/about');
+            }}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a 
-            href="/#contact" 
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/#hero" 
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             CONTACT
           </a>
@@ -155,23 +162,27 @@ const Topbar = () => {
       >
         <nav className="flex flex-col gap-4 pt-6 pb-4">
           <a
-            href="/#work"
-            onClick={(e) => handleNavClick(e, '#work')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/#hero"
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             WORK
           </a>
           <a
-            href="/#about"
-            onClick={(e) => handleNavClick(e, '#about')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/about"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              navigate('/about');
+            }}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             ABOUT
           </a>
           <a
-            href="/#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#CE5347] transition-colors cursor-pointer"
+            href="/#hero"
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="text-primary text-base font-normal font-geist p-2.5 hover:text-[#FF5500] transition-colors cursor-pointer"
           >
             CONTACT
           </a>

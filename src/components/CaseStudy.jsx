@@ -26,7 +26,7 @@ const CaseStudy = ({ company, title, description, tags, metrics, bgColor, hoverC
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full rounded-[10px] overflow-hidden transition-all duration-300 hover:scale-[1.01]" 
+      className="relative w-full rounded-[10px] overflow-hidden transition-all duration-300 hover:scale-[1.01] case-study-card" 
       style={{ 
         backgroundColor: displayBgColor,
         borderWidth: '1px',

@@ -58,14 +58,14 @@ export const caseStudies = [
       role: "Lead Designer",
       collaborators: "Product Management, Engineering, Design Systems.",
       timeline: "Q3 - Q4 2025 (Beta)",
-      summary: "I led the design of a unified post-call intelligence experience across the Zendesk Voice platform. Multiple voice solutions such as native Voice, Voice TPE, AI Voice Agents, and Contact Center were generating differing post-call comments, creating an inconsistent experience to review calls and extract insights reliably.",
+      summary: "I led the design of a unified post-call comment experience across the Zendesk Voice platform. Multiple voice solutions such as native Voice, Voice TPE, AI Voice Agents, and Contact Center were generating differing post-call comments, creating an inconsistent experience to review calls and extract insights reliably.",
       summaryExtended: "I redesigned the post-call comment into a single, dynamic experience that adapts to different call types while supporting AI-generated summaries, transcriptions, and richer post-call workflows.",
-      outcome: "The result was a consistent, scalable post-call experience that improved clarity, reduced fragmentation across voice products, and bridge the gap for feature parity.",
+      outcome: "The result was a consistent, scalable post-call experience that improved clarity, reduced fragmentation across voice products, and bridges the gap for feature parity.",
       businessGoal: "Supported OKR to grow voice customers by 5% by improving the consistency, clarity, and perceived maturity of the Voice platform—reducing friction for adoption and strengthening AI feature readiness,",
-      userImpact: "Reduced time and effort required for agents and supervisors to review by centralizing call data. This enabled faster call comprehension and  easier validation of AI insights.",
+      userImpact: "Reduced time and effort required for agents and supervisors to review tickets by centralizing call data. This enabled faster call comprehension and  easier validation of AI insights.",
       discoveryTitle: "Defining the problem and workshopping a path forward",
-      discoveryDescription: "To align on a path forward, I ran a cross-functional workshop with Product, Engineering, Design, and Research to evaluate the existing experience and identify what a unified post-call comment needed to support.",
-      discoveryDescriptionExtended: "A key constraint was accommodating both Twilio-based voice solutions and the AWS-based Contact Center product without exposing technical differences to users. This was due to a recent acquisition leading to additional considerations for the voice product.",
+      discoveryDescription: "To align on a path forward, I ran a cross-functional workshop with Product, Engineering, Design, and Research to evaluate the existing experience and identifyng ke gaps in the experience that needed to support.",
+      discoveryDescriptionExtended: "A key constraint was accommodating both a Twilio-based voice solution and a AWS-based solution without exposing technical differences to users. This was due to a recent acquisition leading to additional considerations for the voice product.",
       discoveryInsights: [
         {
           title: "CORE FOCUS #1",
@@ -93,7 +93,7 @@ export const caseStudies = [
         }
       ],
       ideationTitle: "Designing a unified post-call intelligence framework",
-      ideationDescription: "I explored design concepts through user flows and wireframes, grounded in research with customer success teams and insights from competitive analysis. These explorations helped define requirements for a flexible, scalable post-call system that could adapt to different voice channel types.",
+      ideationDescription: "I explored design concepts through user flows and wireframes, grounded in research supplied by our UXR team and insights from competitive analysis. These explorations helped define requirements for a flexible, scalable post-call system that could adapt to different call types.",
       flowDiagram: "/images/case-studies/zendesk/Flowchart_resized.png",
       ideationSubheading: "Early Ideation",
       ideationExtendedDescription: "Using the flows as a foundation, I explored low-fidelity layouts and interaction patterns, then created an early interactive prototype using Figma Make to quickly test structure, hierarchy, and access models.",
@@ -106,14 +106,13 @@ export const caseStudies = [
         }
       ],
       researchTitle: "Researching Through an Early Access Program",
-      researchDescription: "This work was part of the Local Measure integration and delivered under a tight timeline. To balance platform stability with research speed, we launched the redesigned experience through an Early Access Program (EAP), allowing customers to opt in and use it in production while we continued to iterate.",
+      researchDescription: "This work was part of a high priority integration and delivered under a tight timeline. To balance platform stability with research speed, we launched the redesigned experience through an Early Access Program (EAP), allowing customers to opt in and use it in production while we continued to iterate.",
       researchSubheading: "Goal of Early Access",
       researchExtendedDescription: "The Early Access Program (EAP) is being used to validate both experience quality and business impact by combining usage data with ongoing customer interviews. This approach allows us to safely test the unified post-call experience in production, reduce the risk of premature platform standardization, and inform the roadmap toward a GA release planned for 2026.",
       researchImpactTitle: "Impact Observed Through Ongoing Early Access Program",
       researchMetrics: [
         { value: "+3%", label: "INCREASE IN POST-CALL AI ADOPTION" },
-        { value: "15%", label: "REDUCTION IN QA TIME" },
-        { value: "81%", label: "OVERALL SATISFACTION" }
+        { value: "15%", label: "REDUCTION IN QA TIME" }
       ]
     }
   },
@@ -121,11 +120,11 @@ export const caseStudies = [
     id: "zendesk-embedded-voice",
     company: "ZENDESK",
     title: "Embedded Voice — Designing Real-Time Calling for the Web",
-    description: "This project focused on enabling call centers to offload routine inquiries to AI without sacrificing control or service quality. I designed admin tools for agent setup, live call monitoring, human takeover, and post-call training to continuously improve AI performance.",
-    tags: ["0 TO 1 DESIGN", "AGENTIC AI"],
+      description: "An embedded voice experience that lets customers move from web messaging to live voice support without breaking context.",
+    tags: ["0 TO 1 DESIGN", "WEB RTC"],
     metrics: [
-      { value: "1.1%", label: "ATC CONVERSION" },
-      { value: "62%", label: "OVERALL SATISFACTION" }
+      { value: "87%", label: "OVERALL USER SATISFACTION" },
+      { value: "18%", label: "REDUCTION IN FTR" }
     ],
     bgColor: "#b1aaec",
     hoverColor: "#FBF9E6",
@@ -136,13 +135,13 @@ export const caseStudies = [
     // Case Study Page Data
     pageData: {
       category: "EMBEDDED VOICE & REAL-TIME CALLING",
-      type: "Net new functionality",
+      type: "Web Messenger",
       role: "Lead Designer",
       collaborators: "Product Management, Engineering, Design Systems.",
       timeline: "Q1-Q2 2023",
-      summary: "Embedded Voice enables end users to start a real-time voice call directly from on a website using Zendesk Messenger.",
-      summaryExtended: "Delivered as a one-quarter MVP, the project addressed urgent enterprise demand while laying the groundwork for video calling over Voice. I led experience definition across admin setup, end-user entry points, and platform integration, partnering closely with Product and Engineering to scope a phased release that balanced speed, quality, and long-term extensibility.",
-      outcome: "Enabled real-time voice support on the web while creating a future-proof foundation for multimodal customer conversations",
+      summary: "Embedded Voice enables end users to start a real-time voice call directly from a website using Zendesk Messenger.",
+      summaryExtended: "Delivered as a one-quarter MVP, the project addressed urgent enterprise demand while laying the groundwork for video calling over Voice. I led the design of the experience across admin setup, end-user entry points, and agent workflows, partnering closely with Product and Engineering to scope a phased release that balanced speed, quality, and long-term extensibility.",
+      outcome: "Enabled real-time voice support on the web while creating a future-proof foundation for multimodal customer conversations.",
       businessGoal: "Expanded Zendesk Voice into web-based use cases, unlocking immediate enterprise value while establishing a scalable foundation for future capabilities such as video calling.",
       userImpact: "Enabled customers to transition from web browsing to live voice support in a single, familiar flow—reducing friction and preserving context.",
       discoveryTitle: "Understanding the competitive landscape and best practices to be applied.",
@@ -164,7 +163,7 @@ export const caseStudies = [
       ],
       designPrinciple: "Design voice as a purposeful extension of messaging, grounded in familiar patterns, constrained by real-world reliability, and introduced only when it adds clear user value.",
       ideationTitle: "Ideation: Translating Designs into Requirements",
-      ideationDescription: "Early ideation focused on exploring multiple experience concepts in parallel while pressure-testing them against technical feasibility and delivery timelines. Working closely with Product, I evaluated which interaction models could realistically ship within an MVP.",
+      ideationDescription: "Early ideation focused on exploring multiple concepts in parallel while pressure-testing them against technical feasibility and delivery timelines. Working closely with Product, I evaluated which concepts could realistically ship within an MVP.",
       ideationDescriptionExtended: "Given the complexity of introducing real-time voice into an existing messaging surface, concepts were shaped by what could be built safely and reliably within a single quarter, grounding design decisions in reality rather than idealised solutions.",
       flowDiagram: null,
       ideationSubheading: null,
@@ -192,7 +191,7 @@ export const caseStudies = [
           alt: "Accessibility specification",
           caption: null,
           subheading: "From Ideation to Phased Delivery",
-          description: "Validated concepts directly informed requirements gathering and user story creation. I collaborated with Product to define phased outcomes and map what was required for each release window, culminating in a shared Jira user story map that aligned design intent, engineering scope, and delivery sequencing."
+          description: "These designs directly informed requirements and user story creation. I collaborated with Product to define phased outcomes and map what was required for each release window, culminating in a shared Jira user story map that aligned design intent, engineering scope, and delivery sequencing."
         },
         {
           src: "/images/case-studies/zendesk-embedded-voice/jira.png",
@@ -200,20 +199,19 @@ export const caseStudies = [
           caption: null
         }
       ],
-      researchTitle: "Validating the embedded voice experience",
-      researchDescription: "I conducted user testing sessions with both end users and support agents to validate the embedded voice experience. The research focused on usability, audio quality perception, and workflow integration effectiveness.",
-      researchSubheading: "Research Goals",
-      researchExtendedDescription: "The research aimed to validate that the embedded voice experience met user expectations for quality and ease of use, while also confirming that it reduced friction compared to traditional voice calling solutions.",
-      researchImpactTitle: "Impact Observed Through User Testing",
+      researchTitle: "MVP Impact and Product Future",
+      researchDescription: "Following the initial launch, the project was deprioritised, but as of 2025 it has been reprioritised in response to growing demand—primarily to support the introduction of video calling.",
+      researchSubheading: null,
+      researchExtendedDescription: null,
+      researchImpactTitle: "Impact reported from user testing",
       researchMetrics: [
-        { value: "1.1%", label: "ATC CONVERSION" },
-        { value: "62%", label: "OVERALL SATISFACTION" },
-        { value: "40%", label: "REDUCTION IN CONTEXT SWITCHING" }
+        { value: "87%", label: "OVERALL USER SATISFACTION" },
+        { value: "18%", label: "REDUCTION IN FTR" }
       ],
       solutionEndUserTitle: "End-user experience",
-      solutionEndUserDescription: "Users can start a voice call directly within Messenger, removing the need to switch channels or leave the website. The experience prioritises clarity, availability, and a seamless transition from chat to real-time support.",
+      solutionEndUserDescription: "Users can start a voice call directly from Messenger or from a Embedded API on the customer website. This removes the need to switch channels or leave the website. The experience prioritises clarity, availability, and a seamless transition from chat to real-time support.",
       solutionAdminTitle: "Admin Experience",
-      solutionAdminDescription: "We introduced a new web-based line type that gives admins the same level of control and routing flexibility as existing PSTN voice lines"
+      solutionAdminDescription: "We introduced a new web-based line type that gives admins the same level of control and routing flexibility as existing PSTN voice lines. "
     }
   },
   {

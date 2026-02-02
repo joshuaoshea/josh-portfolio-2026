@@ -483,6 +483,17 @@ const CaseStudyPage = () => {
                   )}
                 </div>
 
+                {/* Workshop Image - Only for zendesk-voice-intelligence */}
+                {id === 'zendesk-voice-intelligence' && gapAnalysisPath && (
+                  <div className="bg-[rgba(239,239,239,0.75)] rounded-lg p-6 md:p-8 lg:p-[15px] min-h-[300px] lg:min-h-[472px] flex items-center justify-center mb-6 md:mb-8">
+                    <img 
+                      src={gapAnalysisPath}
+                      alt="Workshop findings and gap analysis"
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                )}
+
                 <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-4 md:mb-6">
                   Analysis Insights
                 </h3>
@@ -629,7 +640,7 @@ const CaseStudyPage = () => {
                       <div className="bg-[rgba(239,239,239,0.75)] rounded-lg py-[15px] flex flex-col gap-[10px] items-center mb-6 md:mb-8">
                         {!image.prototypeUrl && image.caption && (
                           <p className="text-primary text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                            {captionNumber}. {image.caption}
+                            {image.caption}
                           </p>
                         )}
                         <div className="flex items-center justify-center px-4 w-full">
@@ -713,24 +724,31 @@ const CaseStudyPage = () => {
                       <p className="text-primary text-base md:text-lg lg:text-xl font-normal font-manrope leading-normal tracking-[0.4px] mb-6 md:mb-8">
                         {caseStudy.researchExtendedDescription}
                       </p>
+                    </>
+                  )}
 
+                  {/* Show impact title and metrics if they exist */}
+                  {caseStudy.researchImpactTitle && (
+                    <>
                       <h3 className="text-primary text-xl md:text-2xl font-medium font-manrope leading-[1.45] tracking-[0.48px] mb-6 md:mb-8">
                         {caseStudy.researchImpactTitle}
                       </h3>
 
                       {/* Impact Metrics - 3 columns grid */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-[15px] md:gap-y-[15px]">
-                        {caseStudy.researchMetrics && caseStudy.researchMetrics.map((metric, index) => (
-                          <div key={index} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] flex flex-col justify-center min-h-[146px]">
-                            <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-2 md:mb-3">
-                              {metric.value}
-                            </p>
-                            <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
-                              {metric.label}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
+                      {caseStudy.researchMetrics && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-[15px] md:gap-y-[15px]">
+                          {caseStudy.researchMetrics.map((metric, index) => (
+                            <div key={index} className="bg-[#FEFAF6] border border-[#DEDEDE] rounded-lg p-4 md:p-5 lg:p-[19px] flex flex-col justify-center min-h-[146px]">
+                              <p className="text-primary text-4xl md:text-5xl lg:text-[64px] font-normal font-manrope leading-[1.65] tracking-[1.28px] mb-2 md:mb-3">
+                                {metric.value}
+                              </p>
+                              <p className="text-[#65707b] text-xs md:text-sm font-medium font-manrope leading-[1.45] tracking-[0.28px]">
+                                {metric.label}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </>
                   )}
 

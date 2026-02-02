@@ -71,7 +71,7 @@ const Topbar = () => {
             <p className="text-primary text-sm md:text-base font-medium font-geist">{personalInfo.name}</p>
           </div>
           <div className="hidden sm:block px-1.5 py-2.5">
-            <p className="text-secondary text-sm md:text-base font-normal font-geist">{personalInfo.title}</p>
+            <p className="text-secondary text-sm md:text-base font-normal font-geist">DUBLIN, IRELAND</p>
           </div>
         </div>
 

@@ -30,7 +30,7 @@ const Footer = () => {
                 </span>
               </a>
               <a 
-                href="https://drive.google.com/file/d/1RkGb5ThvmQAudqL8VD7GtRaa4MXtR1kH/view?usp=drive_link"
+                href={socialLinks.cv}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-[#FF5500] hover:bg-[#FF5500]/10 transition-colors duration-200 rounded-[11px] px-[25px] py-[20px] h-[60px] w-full sm:w-[232px] flex items-center justify-center"

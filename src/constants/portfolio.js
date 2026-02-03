@@ -13,7 +13,7 @@ export const personalInfo = {
 export const socialLinks = {
   linkedin: "https://www.linkedin.com/in/joshoshea/",
   instagram: "https://instagram.com/yourprofile",
-  cv: "#cv" // Update with actual CV link
+  cv: "https://drive.google.com/file/d/1VGlzpgqcOMWC-Spd_KQfCMwzn88opjyg/view?usp=sharing"
 };
 
 export const experience = [

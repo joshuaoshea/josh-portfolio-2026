@@ -68,7 +68,7 @@ const CaseStudies = () => {
       )}
 
       <div className="max-w-[1440px] mx-auto relative z-10">
-        <h2 className="text-primary text-2xl font-normal font-manrope mb-6">Case Studies</h2>
+        <h2 className="text-primary text-[32px] font-medium font-manrope mb-6 pb-5">Case Studies</h2>
         
         <div className="flex flex-col gap-8">
           {caseStudies.map((study, index) => (

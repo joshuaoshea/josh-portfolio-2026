@@ -114,7 +114,7 @@ const CaseStudyPage = () => {
               {/* Summary Section */}
               <section id="summary" className="scroll-mt-24">
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-primary text-2xl md:text-3xl lg:text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] mb-4 md:mb-6">
+                  <h2 className="text-primary text-[32px] font-medium font-manrope leading-[1.45] tracking-[0.64px] pb-[10px]">
                     Summary
                   </h2>
                   
